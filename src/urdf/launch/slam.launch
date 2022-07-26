@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="robot_description" textfile="$(find urdf)/urdf/urdf.urdf"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find urdf)/include/gazebo/world.world"/>
+    </include>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model urdf"/>
+   <!-- 
+     
+      <include file="$(find urdf)/launch/hector_slam.launch"/>  
+ <include file="$(find urdf)/launch/tutorial.launch"/>
+     <include file="$(find urdf)/hector_slam/hector_slam_launch/launch/tutorial.launch"/>-->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find urdf)/include/rviz/config.rviz"/>
+    <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
+</launch>

@@ -1,0 +1,2 @@
+urdf
+-DCATKIN_DEVEL_PREFIX=/home/n/urdf_ws/devel -DCMAKE_INSTALL_PREFIX=/home/n/urdf_ws/install -G Unix Makefiles
